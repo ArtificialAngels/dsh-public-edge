@@ -1,0 +1,65 @@
+{
+  "name": "dsh-public-edge",
+  "displayName": "公网访问",
+  "version": "0.2.0",
+  "description": "为 DSH 加一个「公网访问」面板：一键启停 Cloudflare 隧道、复制带 token 的公网链接与二维码，并内置局域网桥（Host 改写 / 剥 Origin / WebSocket 透传）。cloudflared 缺失时自动下载。",
+  "keywords": [
+    "deepseek-harness",
+    "deepseek-harness-plugin",
+    "dsh",
+    "dsh-plugin",
+    "cordis-plugin",
+    "public-url",
+    "tunnel",
+    "cloudflare-tunnel",
+    "remote-access",
+    "qr-code"
+  ],
+  "license": "MIT",
+  "author": "ArtificialAngels",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "main": "./lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./lib/client.js",
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "cordis.patch.yml",
+    "README.md",
+    "README.en.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ArtificialAngels/dsh-public-edge.git"
+  },
+  "homepage": "https://github.com/ArtificialAngels/dsh-public-edge#readme",
+  "bugs": {
+    "url": "https://github.com/ArtificialAngels/dsh-public-edge/issues"
+  },
+  "dependencies": {
+    "qrcode": "^1.5.4"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "inject": [
+        "@deepseek-ai/dsh-client-locale",
+        "@deepseek-ai/dsh-client-ui-settings"
+      ]
+    }
+  },
+  "scripts": {
+    "test": "node test/smoke.mjs"
+  }
+}

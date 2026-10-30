@@ -1,0 +1,12 @@
+# dsh-public-edge 自带插入片段：把「公网访问」插件挂进 DSH 插件树。
+# 一般不需要改；要改端口/自动启动等，在 profile 的 cordis.patch.yml 里按 id 覆盖：
+#   - id: public-edge
+#     config:
+#       port: 8787
+#       autoStart: true
+- insert:
+    - id: public-edge
+      name: dsh-public-edge
+      config:
+        port: 8787
+        autoStart: true
