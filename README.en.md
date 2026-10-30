@@ -20,11 +20,11 @@ or a release tarball:
 E:\DSH-Portable\dsh.exe plugin --profile web add https://github.com/ArtificialAngels/dsh-public-edge/releases/download/v0.2.0/dsh-public-edge-0.2.0.tgz
 ```
 
-**Restart DSH completely** afterwards. Then open **Settings → Public access** and press Start. The first start downloads `cloudflared` (~55 MB); mainland-China users can fall back to mirrors via the `downloadMirrors` config.
+**Restart DSH completely** afterwards. Then open **avatar menu (bottom-left) → Settings → Public access** and press Start. The first start downloads `cloudflared` (~55 MB); mainland-China users can fall back to mirrors via the `downloadMirrors` config.
 
 ## Usage
 
-1. Settings → Public access → **Start**.
+1. In DSH open **avatar menu (bottom-left) → Settings → Public access → Start**.
 2. **Copy link** and open it in a phone browser (first visit sets a 30-day cookie), or open `http://127.0.0.1:8788/pair` on the PC for a QR code.
 3. Press **Stop** when done; press **New address** to refresh the tunnel domain.
 

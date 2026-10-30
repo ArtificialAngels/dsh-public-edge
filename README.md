@@ -51,7 +51,7 @@ pnpm add github:ArtificialAngels/dsh-public-edge
 
 然后把 `"dsh-public-edge"` 加进同目录 `package.json` 的 `dsh.profile.bundles` 数组，重启 DSH。
 
-> 装完重启 DSH，在 **设置 → 公网访问** 里点「启动」。第一次启动会下载 `cloudflared`（约 55 MB，视网络 1–5 分钟），面板会显示进度/错误。
+> 装完重启 DSH，在 **头像菜单 → 设置 → 公网访问** 里点「启动」。第一次启动会下载 `cloudflared`（约 55 MB，视网络 1–5 分钟），面板会显示进度/错误。
 
 ### 验证
 
@@ -66,7 +66,7 @@ Get-Content E:\DSH-Portable\data\logs\dsh.stdout.log | Select-String "public-edg
 
 ## 使用
 
-1. **设置 → 公网访问 → 启动**：状态变成「运行中」，出现隧道地址和带 token 的链接。
+1. 打开 DSH，点**左下角头像（账号菜单）→ 设置 → 公网访问 → 启动**：状态变成「运行中」，出现隧道地址和带 token 的链接。
 2. 点 **复制链接**，手机浏览器打开；或本机开 `http://127.0.0.1:8788/pair` 扫码。
 3. 首次带 token 打开后，浏览器会拿到 cookie（30 天），之后直接开裸地址也能进。
 4. 不用时点 **停止**；域名变了点 **换地址**。
