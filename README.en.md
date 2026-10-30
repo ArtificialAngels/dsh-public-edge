@@ -6,18 +6,28 @@ A standard DeepSeek Harness (DSH) plugin that adds a **Public access** panel to 
 
 ## Install
 
-```powershell
-# DSH-Portable on Windows
-E:\DSH-Portable\dsh.exe plugin --profile web add github:ArtificialAngels/dsh-public-edge
+> Not published to npm (the in-app market will not find it). Install straight from the GitHub repository URL:
 
-# pinned
-E:\DSH-Portable\dsh.exe plugin --profile web add github:ArtificialAngels/dsh-public-edge#v0.2.0
+```
+https://github.com/ArtificialAngels/dsh-public-edge
 ```
 
-or a release tarball:
+**Option A — paste the repo URL into DSH (no command line):** left sidebar **Plugins** → **Add plugin** → paste the URL → **Install** → fully restart DSH.
+
+**Option B — CLI:**
 
 ```powershell
-E:\DSH-Portable\dsh.exe plugin --profile web add https://github.com/ArtificialAngels/dsh-public-edge/releases/download/v0.2.0/dsh-public-edge-0.2.0.tgz
+# DSH-Portable on Windows
+E:\DSH-Portable\dsh.exe plugin --profile web add https://github.com/ArtificialAngels/dsh-public-edge
+
+# pinned
+E:\DSH-Portable\dsh.exe plugin --profile web add github:ArtificialAngels/dsh-public-edge#v0.2.1
+```
+
+**Option C — local tarball / directory** (when GitHub is unreachable): download the release asset `dsh-public-edge-0.2.1.tgz`, then paste the local file/directory path into Add plugin, or:
+
+```powershell
+E:\DSH-Portable\dsh.exe plugin --profile web add file:E:/path/to/dsh-public-edge-0.2.1.tgz
 ```
 
 **Restart DSH completely** afterwards. Then open **avatar menu (bottom-left) → Settings → Public access** and press Start. The first start downloads `cloudflared` (~55 MB); mainland-China users can fall back to mirrors via the `downloadMirrors` config.

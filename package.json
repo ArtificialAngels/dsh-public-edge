@@ -1,7 +1,7 @@
 {
   "name": "dsh-public-edge",
   "displayName": "公网访问",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "为 DSH 加一个「公网访问」面板：一键启停 Cloudflare 隧道、复制带 token 的公网链接与二维码，并内置局域网桥（Host 改写 / 剥 Origin / WebSocket 透传）。cloudflared 缺失时自动下载。",
   "keywords": [
     "deepseek-harness",

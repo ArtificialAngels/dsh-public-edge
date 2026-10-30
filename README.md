@@ -14,44 +14,53 @@
 - **零依赖工具链**：`cloudflared` 不在时自动下载到 `~/.dsh/dsh-public-edge/`，GitHub 直连不通会自动走镜像。
 - **安全加固**：桥上的 `/pair` 一律 404（token 页只在本机回环端口）；经隧道的响应自动补 `Secure` cookie 和 HSTS；控制接口走 DSH 已鉴权的 `/api` 通道，只有本机 owner 能调。
 
-## 安装（标准 DSH 插件方法）
+## 安装
 
-`dsh plugin` 会把参数原样转发给 profile 目录里的 pnpm，因此支持 pnpm 的全部安装语法。**装完完全退出 DSH 再打开**（host 插件在启动时加载）。
+> 本插件**没有发布到 npm**，插件市场里搜不到；直接复制下面的 **GitHub 仓库地址** 安装即可。
+>
+> **仓库地址（复制这一条）：**
+> ```
+> https://github.com/ArtificialAngels/dsh-public-edge
+> ```
 
-### 方式 A：从 GitHub 安装（推荐）
+### 方式 A：在 DSH 插件页粘贴仓库地址（推荐，零命令行）
+
+1. 打开 DSH → 左侧 **插件** 页 → 右上 **添加插件**；
+2. 把上面的仓库地址粘进输入框（该输入框支持「包名、GitHub 仓库地址或本地目录路径」）；
+3. 点 **安装**；
+4. **完全退出 DSH 再打开**（host 插件在启动时加载）。
+
+### 方式 B：命令行（`dsh plugin`，等价于 A）
+
+`dsh plugin` 会把参数原样转发给 profile 里的 pnpm，支持 pnpm 的全部安装语法。
 
 ```powershell
 # Windows / DSH-Portable
-E:\DSH-Portable\dsh.exe plugin --profile web add github:ArtificialAngels/dsh-public-edge
+E:\DSH-Portable\dsh.exe plugin --profile web add https://github.com/ArtificialAngels/dsh-public-edge
 
-# 固定版本
-E:\DSH-Portable\dsh.exe plugin --profile web add github:ArtificialAngels/dsh-public-edge#v0.2.0
+# 固定版本（推荐，避免跟着 main 走）
+E:\DSH-Portable\dsh.exe plugin --profile web add github:ArtificialAngels/dsh-public-edge#v0.2.1
 ```
 
 *非 Portable 安装：把可执行文件换成你的 `dsh`，profile 名按实际使用（默认 `web`）。*
 
-### 方式 B：从 Release 的 tgz 安装
+### 方式 C：本地 tgz / 本地目录（连不上 GitHub 时用）
 
-```powershell
-E:\DSH-Portable\dsh.exe plugin --profile web add https://github.com/ArtificialAngels/dsh-public-edge/releases/download/v0.2.0/dsh-public-edge-0.2.0.tgz
-```
+下载 Release 附件 `dsh-public-edge-0.2.1.tgz`（https://github.com/ArtificialAngels/dsh-public-edge/releases/tag/v0.2.1），然后：
 
-### 方式 C：本地 tgz
+- 插件页「添加插件」里粘贴**本地文件路径或目录路径**；或
+- 命令行：`E:\DSH-Portable\dsh.exe plugin --profile web add file:E:/path/to/dsh-public-edge-0.2.1.tgz`
 
-```powershell
-E:\DSH-Portable\dsh.exe plugin --profile web add file:E:/path/to/dsh-public-edge-0.2.0.tgz
-```
-
-### 方式 D：手动（等价于 A，用于 `dsh plugin` 不可用的时候）
+### 方式 D：手动写 profile（`dsh plugin` 不可用时）
 
 ```powershell
 cd <DSH_HOME>\profiles\web          # 例如 E:\DSH-Portable\data\dsh-home\profiles\web
-pnpm add github:ArtificialAngels/dsh-public-edge
+pnpm add https://github.com/ArtificialAngels/dsh-public-edge
 ```
 
-然后把 `"dsh-public-edge"` 加进同目录 `package.json` 的 `dsh.profile.bundles` 数组，重启 DSH。
+再把 `"dsh-public-edge"` 加进同目录 `package.json` 的 `dsh.profile.bundles` 数组，重启 DSH。
 
-> 装完重启 DSH，在 **头像菜单 → 设置 → 公网访问** 里点「启动」。第一次启动会下载 `cloudflared`（约 55 MB，视网络 1–5 分钟），面板会显示进度/错误。
+> 装完重启 DSH，在 **头像菜单 → 设置 → 公网访问** 里点「启动」。第一次启动会自动下载 `cloudflared`（约 55 MB，视网络 1–5 分钟），面板会显示进度/错误；GitHub 直连失败会自动尝试镜像。
 
 ### 验证
 
