@@ -61,5 +61,9 @@
   },
   "scripts": {
     "test": "node test/smoke.mjs"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
   }
 }
